@@ -2,3 +2,9 @@ language: java
 
 jdk:
   - oraclejdk8
+
+  services:
+    - postgresql
+
+  before_script:
+      - psql -c 'create database friendly-money-grinder;' -U postgres
