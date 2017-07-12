@@ -8,3 +8,8 @@ services:
 
 before_script:
     - psql -c 'create database friendly_money_grinder;' -U postgres
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: fda05a92-8fc4-408c-abcf-491d2b504d52
