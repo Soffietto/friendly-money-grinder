@@ -7,4 +7,4 @@ services:
   - postgresql
 
 before_script:
-    - psql -c 'create database friendly-money-grinder;' -U postgres
+    - psql -c 'create database friendly_money_grinder;' -U postgres
