@@ -125,8 +125,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
 
                             <h5 class="item_price">${product.cost} ${product.currency}</h5>
-                            <p>${p.title}</p>
+                            <p>${product.title}</p>
                         </div>
+                        <a href="${product.url}" class="add-cart item_add"> BUY!</a>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -136,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="col-md-4 product-left p-left">
                             <div class="product-main simpleCart_shelfItem">
                                 <#list products as p>
-                                    <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="${p.imgUrl}" alt="" /></a>
+                                    <a href="/product/${p.id}" class="mask"><img class="img-responsive zoom-img" src="${p.imgUrl}" alt="" /></a>
                                     <div class="product-bottom">
                                         <h3>${p.name}</h3>
                                         <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">${p.cost}</span></h4>
