@@ -28,6 +28,11 @@ public class MainController {
         return "products";
     }
 
+    @RequestMapping("/home")
+    public String getHomePage(){
+        return "home";
+    }
+
     @RequestMapping("/products/{product_id}")
     public String getSinglePage(@PathVariable(name = "product_id") Long id){
         Product product = productService.findOneById(id);
