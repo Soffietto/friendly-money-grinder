@@ -37,7 +37,7 @@ public class ScheduledTasks {
         log.info("The time is now {}", dateFormat.format(new Date()));
     }
 
-    @Scheduled(fixedRate = 60480000) //именно столько миллисекунд в неделе
+    @Scheduled(fixedRate = /*60480000*/20000) //именно столько миллисекунд в неделе
     public void updateProductDataBase(){
         log.info("----------------------------");
         log.info("Product table is now being updated");
@@ -45,7 +45,7 @@ public class ScheduledTasks {
         Pageable pageable = getProperPageble();
         List<Product> newProductList;
         if(pageable != null){
-            List<Product> deleteProductList = productService.getAllFirstByCounter(pageable); //TODO Загрузил 10
+            List<Product> deleteProductList = productService.getAllFirstByCounter(pageable);
             int listCount = deleteProductList.size();
             newProductList = serverUtil.getAllFromServer(listCount);
             log.info("delete count is " + listCount);
