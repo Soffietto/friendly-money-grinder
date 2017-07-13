@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Luxury Watches A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
+    <meta name="verify-admitad" content="0faddc6af9" />
+    <title>Azat's Internet Catalog</title>
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     <script src="/js/jquery-1.11.0.min.js"></script>
@@ -137,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="col-md-4 product-left p-left">
                             <div class="product-main simpleCart_shelfItem">
                                 <#list products as p>
-                                    <a href="/product/${p.id}" class="mask"><img class="img-responsive zoom-img" src="${p.imgUrl}" alt="" /></a>
+                                    <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img" src="${p.imgUrl}" alt="" /></a>
                                     <div class="product-bottom">
                                         <h3>${p.name}</h3>
                                         <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">${p.cost}</span></h4>
