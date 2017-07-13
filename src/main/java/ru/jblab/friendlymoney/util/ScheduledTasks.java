@@ -55,7 +55,7 @@ public class ScheduledTasks {
                 log.info(product.getName() + "successfully deleted");
             }
         }else {
-            newProductList = serverUtil.getAllFromServer(10);
+            newProductList = serverUtil.getAllFromServer(50);
         }
         log.info("upload count is " + newProductList.size());
         for (Product product : newProductList) {

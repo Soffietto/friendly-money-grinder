@@ -121,18 +121,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="single-para simpleCart_shelfItem">
                             <h2>${product.name}</h2>
                             <div class="star-on">
-                                <ul class="star-footer">
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                </ul>
                                 <div class="clearfix"> </div>
                             </div>
 
-                            <h5 class="item_price">${product.cost}</h5>
-                            <p>Тут будет описание, мы его пока не сделали</p>
+                            <h5 class="item_price">${product.cost} ${product.currency}</h5>
+                            <p>${p.title}</p>
                         </div>
                     </div>
                     <div class="clearfix"> </div>
