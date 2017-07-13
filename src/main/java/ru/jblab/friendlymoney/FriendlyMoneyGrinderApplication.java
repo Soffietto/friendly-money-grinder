@@ -17,8 +17,6 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @EnableScheduling
 public class FriendlyMoneyGrinderApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(FriendlyMoneyGrinderApplication.class);
-
 	public static void main(String[] args) {
 		SpringApplication.run(FriendlyMoneyGrinderApplication.class, args);
 	}
@@ -27,20 +25,5 @@ public class FriendlyMoneyGrinderApplication {
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
-
-	@Bean
-	public ViewResolver viewResolver() {
-		ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-		templateResolver.setCacheable(false);
-		templateResolver.setSuffix(".ftl");
-
-		SpringTemplateEngine engine = new SpringTemplateEngine();
-		engine.setTemplateResolver(templateResolver);
-
-		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-		viewResolver.setTemplateEngine(engine);
-		return viewResolver;
-	}
-
 
 }
