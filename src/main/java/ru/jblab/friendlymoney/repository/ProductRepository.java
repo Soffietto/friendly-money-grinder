@@ -13,8 +13,12 @@ public interface ProductRepository extends CrudRepository<Product, Long>{
 
     @Query(value = "select p from Product p where p.counter = " +
             "(select min(p.counter) from Product p )")
-    List<Product> findAllFirstByCounter(Pageable pageable);
+    List<Product> findAllFirstByCounter(Pageable pageable); //TODO удалит товар с минимальным костом, даже если он будет 1
 
     @Query("select count(p) from Product p")
     Long countAll();
+
+    @Query(value = "select p from Product p where p.counter = " +
+            "(select max(p.counter) from Product p )")
+    List<Product> findAllTopByCounter(Pageable pageable);
 }
