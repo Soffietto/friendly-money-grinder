@@ -35,9 +35,10 @@ public class MainController {
         Set<String> categories = new HashSet<>();
         for (Product product : productList) {
             String category = product.getCategory();
+            if(category != null)
             categories.add(category);
         }
-        if(categories.size() != 1){
+        if(categories.size() != 0){
             model.addAttribute("categories", categories);
         }else {
             model.addAttribute("categories", null);
@@ -65,9 +66,9 @@ public class MainController {
         return "single";
     }
 
-    @RequestMapping("/products/category/{category}")
+    @RequestMapping("/products/category/{category}/**")
     public String getCategoryPage(@PathVariable(name = "category") String category, Model model){
-        List<Product> productList = productService.getAllByCategory(category);
+        List<Product> productList = productService.getAllStaringWith(category);
         model.addAttribute("products", productList);
         model.addAttribute("categories", null);
         return "products";

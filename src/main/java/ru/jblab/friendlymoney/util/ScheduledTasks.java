@@ -22,6 +22,7 @@ public class ScheduledTasks {
 
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    private final int GET_COUNT = 50;
 
     private final ProductService productService;
     private final ServerUtil serverUtil;
@@ -47,10 +48,10 @@ public class ScheduledTasks {
             log.info("-------------------------");
             for (Product product : deleteProductList) {
                 productService.remove(product);
-                log.info(product.getName() + "successfully deleted");
+                log.info(product.getName() + " successfully deleted");
             }
         }else {
-            newProductList = serverUtil.getAllFromServer(100);
+            newProductList = serverUtil.getAllFromServer(GET_COUNT);
         }
         log.info("upload count is " + newProductList.size());
         for (Product product : newProductList) {

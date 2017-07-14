@@ -23,4 +23,6 @@ public interface ProductRepository extends CrudRepository<Product, Long>{
     List<Product> findAllTopByCounter(Pageable pageable);
 
     List<Product> findAllByCategory(String category);
+
+    List<Product> findAllByCategoryStartingWith(String category);
 }
