@@ -1,5 +1,7 @@
 package ru.jblab.friendlymoney.model;
 
+import sun.security.util.Length;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.io.Serializable;
@@ -10,8 +12,11 @@ public class Product extends AbstractEntity implements Serializable{
     private String serial;
     private String name;
     private String cost;
+    @Column(length = 500)
     private String url;
+    @Column(length = 500)
     private String imgUrl;
+    @Column(length = 500)
     private String title;
     private Long counter = 0L;
     private String currency;
