@@ -16,12 +16,7 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--start-menu-->
-    <script src="js/simpleCart.min.js"> </script>
     <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="js/memenu.js"></script>
-    <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-    <!--dropdown-->
-    <script src="js/jquery.easydropdown.js"></script>
 </head>
 <body>
 <!--top-header-->
@@ -75,33 +70,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img" src="${p.imgUrl}" alt=""/></a>
                                 <div class="product-bottom">
                                     <h3>${p.name}</h3>
-                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">${p.cost}</span></h4>
+                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">${p.cost} ${p.currency}</span></h4>
                                 </div>
                                 <div class="srch srch1">
-                                    <span>-50%</span>
+                                    <span>Скидка</span>
                                 </div>
                             </div>
                         </div>
                     </#list>
                 </div>
             </div>
-            <div class="col-md-3 prdt-right">
-                <div class="w_sidebar">
-                    <section  class="sky-form">
-                        <h4>Catogories</h4>
-                        <div class="row1 scroll-pane">
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All Accessories</label>
+                <div class="col-md-3 prdt-right">
+                    <div class="w_sidebar">
+                        <section  class="sky-form">
+                            <h4>Catogories</h4>
+                            <div class="row1 scroll-pane">
+                                <div class="col col-4">
+                                    <#if categories?has_content>
+                                    <#list categories as c>
+                                        <label class="checkbox"><a href="products/category/${c}">${c}</a></label>
+                                    </#list>
+                                    </#if>
+                                </div>
+                                <div class="col col-4">
+                                <#--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>-->
+                                <#--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>-->
+                                <#--<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>-->
+                                </div>
                             </div>
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>
-                            </div>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
                 </div>
-            </div>
             <div class="clearfix"></div>
         </div>
     </div>

@@ -13,7 +13,9 @@ import ru.jblab.friendlymoney.model.Product;
 import ru.jblab.friendlymoney.service.ProductService;
 import ru.jblab.friendlymoney.util.ServerUtil;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class MainController {
@@ -30,6 +32,16 @@ public class MainController {
     @RequestMapping("/products")
     public String getProductsPage(Model model){
         List<Product> productList = productService.getAll();
+        Set<String> categories = new HashSet<>();
+        for (Product product : productList) {
+            String category = product.getCategory();
+            categories.add(category);
+        }
+        if(categories.size() != 1){
+            model.addAttribute("categories", categories);
+        }else {
+            model.addAttribute("categories", null);
+        }
         model.addAttribute("products", productList);
         return "products";
     }
@@ -51,5 +63,13 @@ public class MainController {
         model.addAttribute("product", product);
         model.addAttribute("products", productList);
         return "single";
+    }
+
+    @RequestMapping("/products/category/{category}")
+    public String getCategoryPage(@PathVariable(name = "category") String category, Model model){
+        List<Product> productList = productService.getAllByCategory(category);
+        model.addAttribute("products", productList);
+        model.addAttribute("categories", null);
+        return "products";
     }
 }

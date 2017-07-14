@@ -21,4 +21,6 @@ public interface ProductRepository extends CrudRepository<Product, Long>{
     @Query(value = "select p from Product p where p.counter = " +
             "(select max(p.counter) from Product p )")
     List<Product> findAllTopByCounter(Pageable pageable);
+
+    List<Product> findAllByCategory(String category);
 }

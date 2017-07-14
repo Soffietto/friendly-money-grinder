@@ -61,4 +61,9 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> getAllTopByCounter(Pageable pageable) {
         return productRepository.findAllTopByCounter(pageable);
     }
+
+    @Override
+    public List<Product> getAllByCategory(String category) {
+        return productRepository.findAllByCategory(category);
+    }
 }

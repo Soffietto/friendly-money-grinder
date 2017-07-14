@@ -14,4 +14,5 @@ public interface ProductService {
     Long countAll();
     List<Product> getAllFirstByCounter(Pageable pageable);
     List<Product> getAllTopByCounter(Pageable pageable);
+    List<Product> getAllByCategory(String category);
 }

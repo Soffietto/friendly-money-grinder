@@ -32,11 +32,6 @@ public class ScheduledTasks {
         this.serverUtil = serverUtil;
     }
 
-    //    @Scheduled(fixedRate = 5000)
-    public void reportCurrentTime() {
-        log.info("The time is now {}", dateFormat.format(new Date()));
-    }
-
     @Scheduled(fixedRate = /*60480000*/864000) //именно столько миллисекунд в неделе
     public void updateProductDataBase(){
         log.info("----------------------------");

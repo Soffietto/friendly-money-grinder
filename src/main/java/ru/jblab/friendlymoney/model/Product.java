@@ -15,6 +15,7 @@ public class Product extends AbstractEntity implements Serializable{
     private String title;
     private Long counter = 0L;
     private String currency;
+    private String category;
 
     public String getSerial() {
         return serial;
@@ -78,5 +79,13 @@ public class Product extends AbstractEntity implements Serializable{
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
