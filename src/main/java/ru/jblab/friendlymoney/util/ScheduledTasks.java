@@ -37,7 +37,7 @@ public class ScheduledTasks {
         log.info("The time is now {}", dateFormat.format(new Date()));
     }
 
-    @Scheduled(fixedRate = /*60480000*/86400) //именно столько миллисекунд в неделе
+    @Scheduled(fixedRate = /*60480000*/864000) //именно столько миллисекунд в неделе
     public void updateProductDataBase(){
         log.info("----------------------------");
         log.info("Product table is now being updated");
