@@ -66,9 +66,9 @@ public class MainController {
         return "single";
     }
 
-    @RequestMapping("/products/category/{category}/**")
+    @RequestMapping("/products/category/{category}")  //TODO поменять во вьюшке категории
     public String getCategoryPage(@PathVariable(name = "category") String category, Model model){
-        List<Product> productList = productService.getAllStaringWith(category);
+        List<Product> productList = productService.getAllByCategory(category);
         model.addAttribute("products", productList);
         model.addAttribute("categories", null);
         return "products";

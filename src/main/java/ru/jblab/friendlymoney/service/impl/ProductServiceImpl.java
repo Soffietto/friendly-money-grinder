@@ -66,9 +66,4 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> getAllByCategory(String category) {
         return productRepository.findAllByCategory(category);
     }
-
-    @Override
-    public List<Product> getAllStaringWith(String category) {
-        return productRepository.findAllByCategoryStartingWith(category);
-    }
 }
