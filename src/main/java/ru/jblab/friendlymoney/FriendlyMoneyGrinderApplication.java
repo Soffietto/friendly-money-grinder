@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 
 @SpringBootApplication
@@ -39,11 +40,12 @@ public class FriendlyMoneyGrinderApplication {
         props.load(in);
         in.close();
 
-		FileOutputStream out = new FileOutputStream("src/main/resources/server.properties");
+		FileOutputStream out = new FileOutputStream("src/main/resources/server.properties", true);
 		String property = props.getProperty("server.uid");
 		if(property == null){
             String uId = serverUtil.getUID();
 			props.setProperty("server.uid", uId);
+			props.remove("server.url");
 			props.store(out, null);
 		}
 		out.close();
