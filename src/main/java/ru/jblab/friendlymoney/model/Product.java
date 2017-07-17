@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Entity
-public class Product extends AbstractEntity implements Serializable{
+public class Product extends AbstractEntity implements Serializable {
 
     private String serial;
     private String name;

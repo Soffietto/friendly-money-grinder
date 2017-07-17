@@ -9,7 +9,7 @@ import ru.jblab.friendlymoney.model.Product;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Product, Long>{
+public interface ProductRepository extends CrudRepository<Product, Long> {
 
     @Query(value = "select p from Product p where p.counter = " +
             "(select min(p.counter) from Product p )")

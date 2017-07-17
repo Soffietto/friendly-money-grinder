@@ -43,12 +43,12 @@ public class ServerUtil {
         try {
             Product[] products = restTemplate.getForObject(builder.build().encode().toUri(), Product[].class);
             return Arrays.asList(products);
-        }catch (ResourceAccessException e){
+        } catch (ResourceAccessException e) {
             throw new ResourceAccessException("Server is offline");
         }
     }
 
-    public String getUID(){
+    public String getUID() {
         String url = env.getProperty("server.url");
         url += GET_UID_URL;
         return restTemplate.getForObject(url, String.class);

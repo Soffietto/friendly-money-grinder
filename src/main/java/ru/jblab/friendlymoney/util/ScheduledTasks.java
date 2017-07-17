@@ -38,13 +38,13 @@ public class ScheduledTasks {
     }
 
     @Scheduled(fixedRate = /*60480000*/864000) //именно столько миллисекунд в неделе
-    public void updateProductDataBase(){
+    public void updateProductDataBase() {
         log.info("----------------------------");
         log.info("Product table is now being updated");
         log.info("----------------------------");
         Pageable pageable = getProperPageble();
         List<Product> newProductList;
-        if(pageable != null){
+        if (pageable != null) {
             List<Product> deleteProductList = productService.getAllFirstByCounter(pageable);
             int listCount = deleteProductList.size();
             newProductList = serverUtil.getAllFromServer(listCount);
@@ -54,7 +54,7 @@ public class ScheduledTasks {
                 productService.remove(product);
                 log.info(product.getName() + " successfully deleted");
             }
-        }else {
+        } else {
             newProductList = serverUtil.getAllFromServer(GET_COUNT);
         }
         log.info("upload count is " + newProductList.size());
@@ -64,11 +64,11 @@ public class ScheduledTasks {
         log.info("Product table updated successfully");
     }
 
-    private Pageable getProperPageble(){
+    private Pageable getProperPageble() {
         Long count = productService.countAll();
-        int pageCount = toIntExact(count/5);
-        if(pageCount == 0){
-            return null ;
+        int pageCount = toIntExact(count / 5);
+        if (pageCount == 0) {
+            return null;
         }
         return new PageRequest(0, pageCount);
     }

@@ -22,33 +22,33 @@ import java.util.Properties;
 public class FriendlyMoneyGrinderApplication {
 
     @Autowired
-	private ServerUtil serverUtil;
+    private ServerUtil serverUtil;
 
-	public static void main(String[] args) {
-		SpringApplication.run(FriendlyMoneyGrinderApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(FriendlyMoneyGrinderApplication.class, args);
+    }
 
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
-	}
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
 
-	@PostConstruct
-	public void getUidifEmpty() throws IOException {
+    @PostConstruct
+    public void getUidifEmpty() throws IOException {
         FileInputStream in = new FileInputStream("src/main/resources/server.properties");
         Properties props = new Properties();
         props.load(in);
         in.close();
 
-		FileOutputStream out = new FileOutputStream("src/main/resources/server.properties", true);
-		String property = props.getProperty("server.uid");
-		if(property == null){
+        FileOutputStream out = new FileOutputStream("src/main/resources/server.properties", true);
+        String property = props.getProperty("server.uid");
+        if (property == null) {
             String uId = serverUtil.getUID();
-			props.setProperty("server.uid", uId);
-			props.remove("server.url");
-			props.store(out, null);
-		}
-		out.close();
-	}
+            props.setProperty("server.uid", uId);
+            props.remove("server.url");
+            props.store(out, null);
+        }
+        out.close();
+    }
 
 }

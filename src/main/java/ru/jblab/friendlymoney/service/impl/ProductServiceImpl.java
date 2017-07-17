@@ -13,7 +13,7 @@ import java.util.List;
 import static java.lang.Math.toIntExact;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
