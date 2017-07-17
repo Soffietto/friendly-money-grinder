@@ -7,7 +7,6 @@ before_script:
 - psql -c 'create database friendly_money_grinder;' -U postgres
 deploy:
   provider: heroku
-  app: friendly-money-grinder
-env:
-  global:
+  api_key:
     secure: lBeBXgOyW3LMsB7QL3I2C/J4kDT7it7c1l+ZYRZ7721r2PgtWi0IYKHJhAZ9bqmaWnmQ65TTIe8vc0iyVW7ATX5XpCkV6KtjG3MDUoHJnSVb3o/IIUXz+ijhIKJXnkySYgIiagVSMPPj8tSUFJ7cLenn1ALhk3Qewk0kHsPDsUUCiJI3uGk2eBbDeEES5KuxqhApOiCmgrGIcu/Tt0i6LCxj510TPw4KzLbcJrWzbYJN7lUpUOjUWv9XTSaIeHjXILvzhyXE3Ep+mXYfYWl3T+fo5A0OsUNpZZf26CGr/7e5rUbFOqzbA9AAwjb8wH+7sicg0A+3LkAoS6TXDy3QouQ8dP05gUcWeub1bmcmowmgrWnCm7w8DqWh8IJWszR0PG4hQWKWdHqG01piOumzQXmMAW+NMc9PbtSr94HRwIdg9chZZv6JemSi3hofjFABEH+5Yvz5fUmoi84OK4EUz7fjuT2uD+nFgnq/EdjmLETEtJhtwDtu40K6SQfKAfMhZm827QwrEbu4YEjQ/ou8zuXxhMgWE4nlNtjcy/Sf/tP6o6UOWfqOwp0lhv4L+A4rU8fthSqh9c8aLST9eCXMxaKFG5ek2WK8uO1AE7/NK20lVqy1BeOU8FQ/xpQ9fSqcJXfGdb90yVUrIG52y6EiSFJdlbgg3TnJ159uxebDedo=
+  app: friendly-money-grinder
