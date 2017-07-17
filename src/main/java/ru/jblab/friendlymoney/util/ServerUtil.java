@@ -22,7 +22,8 @@ public class ServerUtil {
 
     private final RestTemplate restTemplate;
     private final Environment env;
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final String GET_PRODUCTS_URL = "get";
+    private final String GET_UID_URL = "registration";
 
     @Autowired
     public ServerUtil(RestTemplate restTemplate, Environment env) {
@@ -34,6 +35,7 @@ public class ServerUtil {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         String serverUrl = env.getProperty("server.url");
+        serverUrl += GET_PRODUCTS_URL;
         String serverUid = env.getProperty("server.uid");
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(serverUrl)
                 .queryParam("count", count)
@@ -46,8 +48,9 @@ public class ServerUtil {
         }
     }
 
-    public String getUID(String url){
-        String uid = restTemplate.getForObject(url, String.class);
-        return uid;
+    public String getUID(){
+        String url = env.getProperty("server.url");
+        url += GET_UID_URL;
+        return restTemplate.getForObject(url, String.class);
     }
 }

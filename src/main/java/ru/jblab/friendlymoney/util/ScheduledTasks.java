@@ -11,9 +11,13 @@ import org.springframework.stereotype.Component;
 import ru.jblab.friendlymoney.model.Product;
 import ru.jblab.friendlymoney.service.ProductService;
 
+import javax.annotation.PostConstruct;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import static java.lang.Math.toIntExact;
 

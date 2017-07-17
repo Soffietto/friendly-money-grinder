@@ -60,7 +60,7 @@ public class MainController {
         product.setCounter(++counter);
         productService.add(product);
         logger.warn("ADDED SUCCESSFULLY");
-        List<Product> productList = productService.getAllTopByCounter(new PageRequest(0,3));
+        List<Product> productList = productService.getAllFirstByCounter(new PageRequest(0,3));
         model.addAttribute("product", product);
         model.addAttribute("products", productList);
         return "single";
