@@ -3,10 +3,8 @@ jdk:
 - oraclejdk8
 services:
 - postgresql
-before_script:
-- psql -c 'create database friendly_money_grinder;' -U postgres
 deploy:
   provider: heroku
   api_key:
-    secure: fda05a92-8fc4-408c-abcf-491d2b504d52
+    secure: ahQwJfDlXLjPK3ZI/GxEZYba+N2iIxdW41neyqPV6nAzUU2FNb0rvx4DDA6ms3hoDeYnN26XeK8L9xjzCDiJjz6sA26N/REMJcbPnMu9rLbqANajFcd4sRLKyCmJK8D4FNXJKQoYhA3VpMfoYWH7XmHuLx09wINI1G96zx4Q5UdMZzMpjvvmDw5pjt/GG53Iq7pHVXmz5W4a7jKn3GR4oBC6HrtMkth7S3rfHxeRLZ/O/MgoRTU57eOdQw3+CeaygwpBII2bUt9M1Df/JLgC4PI2IDL4H7/u1hVhH0FUiWN7hi5K+T5lrOj5SQJzPJ7UxD10qFXTLbtFPS4D0nwKZ+99hecqK8cDrPJLX4ldRUGQhl6jhRanWLvvZhXMiP4KurbKQV0aua1L3Qy/HBHxEI0wVTSZkp8pkqxYEF902ER5yJ693R1djavq/cqO67V2btR2Ul5/mpsj4bxm+o1cNRa2m9vDhQZ8uyKzvfo1ueq7EQROy7zMea+C02/9Hdvf+QgtsuwpSY0sAQ3efdpr2VpeetvnppZ0u5bn9z392X1TakQfLJOV3flI2HEEZqFtvU1xRk2rrC3QvDjeAbma3eUB/OfczBo5LLHIZaabnQGyM/P27UmqmjSXjaoKvtiMnW5nhPr06k2+tCJKqF1GXNclVlwnQiXlKf02WpxCCGs=
   app: friendly-money-grinder
