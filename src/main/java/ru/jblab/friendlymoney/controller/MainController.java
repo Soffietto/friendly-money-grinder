@@ -60,13 +60,13 @@ public class MainController {
         product.setCounter(++counter);
         productService.add(product);
         logger.warn("ADDED SUCCESSFULLY");
-        List<Product> productList = productService.getAllFirstByCounter(new PageRequest(0, 3));
+        List<Product> productList = productService.getRandomProducts();
         model.addAttribute("product", product);
         model.addAttribute("products", productList);
         return "single";
     }
 
-    @RequestMapping("/products/category/{category}")  //TODO поменять во вьюшке категории
+    @RequestMapping("/products/category/{category}")
     public String getCategoryPage(@PathVariable(name = "category") String category, Model model) {
         List<Product> productList = productService.getAllByCategory(category);
         model.addAttribute("products", productList);

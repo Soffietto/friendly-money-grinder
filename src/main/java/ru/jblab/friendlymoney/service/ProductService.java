@@ -20,7 +20,7 @@ public interface ProductService {
 
     List<Product> getAllFirstByCounter(Pageable pageable);
 
-    List<Product> getAllTopByCounter(Pageable pageable);
-
     List<Product> getAllByCategory(String category);
+
+    List<Product> getRandomProducts();
 }
