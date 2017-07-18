@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-9 header-left">
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <li class="active"><a href="/products">Home</a></li>
+                        <li class="active"><a href="/products">All Products</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -97,7 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="row1 scroll-pane">
                             <div class="col col-4">
                                 <#list categories as c>
-                                    <label class="checkbox"><a href="products/category/${c}">${c}</a></label>
+                                    <label class="checkbox"><a href="/products/category/${c}">${c}</a></label>
                                 </#list>
                             </div>
                             <div class="col col-4">

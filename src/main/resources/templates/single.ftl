@@ -70,15 +70,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="header">
             <div class="col-md-9 header-left">
                 <div class="top-nav">
-                    <ul class="memenu skyblue"><li class="active"><a href="/products">Home</a></li>
+                    <ul class="memenu skyblue"><li class="active"><a href="/products">All Products</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"> </div>
             </div>
             <div class="col-md-3 header-right">
                 <div class="search-bar">
-                    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                    <input type="submit" value="">
+                    <form method="get" action="/search">
+                        <label for="search">Search</label>
+                        <input name="search" type="text" value="Search">
+                        <input type="submit" value="">
+                    </form>
                 </div>
             </div>
             <div class="clearfix"> </div>

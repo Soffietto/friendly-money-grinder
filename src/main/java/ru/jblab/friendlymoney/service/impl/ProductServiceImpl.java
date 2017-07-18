@@ -69,7 +69,8 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getRandomProducts() {
         Long count = productRepository.count();
         if (count > 3) {
-            int index = (int) (Math.random() * (toIntExact(count) - 3));
+            count/=3;
+            int index = (int) (Math.random() * (toIntExact(count)));
             Page<Product> productPage = productRepository.findAll(new PageRequest(index, 3));
             return productPage.getContent();
         }

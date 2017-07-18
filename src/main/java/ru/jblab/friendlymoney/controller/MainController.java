@@ -69,8 +69,19 @@ public class MainController {
     @RequestMapping("/products/category/{category}")
     public String getCategoryPage(@PathVariable(name = "category") String category, Model model) {
         List<Product> productList = productService.getAllByCategory(category);
+        List<Product> allProductList = productService.getAll();
+        Set<String> categories = new HashSet<>();
+        for (Product product : allProductList) {
+            String cat = product.getCategory();
+            if (cat != null)
+                categories.add(cat);
+        }
+        if (categories.size() != 0) {
+            model.addAttribute("categories", categories);
+        } else {
+            model.addAttribute("categories", null);
+        }
         model.addAttribute("products", productList);
-        model.addAttribute("categories", null);
         return "products";
     }
 }
