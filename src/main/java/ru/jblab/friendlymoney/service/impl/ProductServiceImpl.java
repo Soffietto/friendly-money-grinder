@@ -47,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAll() {
-        return (List<Product>) productRepository.findAll();
+        return productRepository.findAll();
     }
 
     @Override
@@ -74,6 +74,11 @@ public class ProductServiceImpl implements ProductService {
             Page<Product> productPage = productRepository.findAll(new PageRequest(index, 3));
             return productPage.getContent();
         }
-        return (List<Product>) productRepository.findAll();
+        return productRepository.findAll();
+    }
+
+    @Override
+    public List<Product> getAllByNamePart(String namePart) {
+        return productRepository.getAllByNameContainingIgnoreCase(namePart);
     }
 }

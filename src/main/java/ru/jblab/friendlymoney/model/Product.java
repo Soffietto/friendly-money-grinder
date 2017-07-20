@@ -20,7 +20,7 @@ public class Product extends AbstractEntity implements Serializable {
 
     @Column(length = 400)
     private String mainImgUrl;
-    @Column(length = 500)
+    @Column(length = 10000)
     private String description;
     private Long counter = 0L;
     private String currency;

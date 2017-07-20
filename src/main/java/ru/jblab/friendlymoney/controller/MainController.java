@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.jblab.friendlymoney.model.Product;
 import ru.jblab.friendlymoney.service.ProductService;
 import ru.jblab.friendlymoney.util.ServerUtil;
@@ -30,7 +31,7 @@ public class MainController {
     }
 
     @RequestMapping("/products")
-    public String getProductsPage(Model model) {
+    public String getProductsPage(@RequestParam(value = "search", required = false) String namePart, Model model) {
         List<Product> productList = productService.getAll();
         Set<String> categories = new HashSet<>();
         for (Product product : productList) {
@@ -43,7 +44,12 @@ public class MainController {
         } else {
             model.addAttribute("categories", null);
         }
-        model.addAttribute("products", productList);
+        if(namePart == null){
+            model.addAttribute("products", productList);
+        }else {
+            List<Product> namePartList = productService.getAllByNamePart(namePart);
+            model.addAttribute("products", namePartList);
+        }
         return "products";
     }
 
@@ -55,9 +61,12 @@ public class MainController {
     @RequestMapping("/products/{product_id}")
     public String getSinglePage(@PathVariable(name = "product_id") Long id, Model model) {
         Product product = productService.findOneById(id);
+        List<String> productImgs = product.getImgUrls();
+        model.addAttribute("imgUrls", productImgs);
         Long counter = product.getCounter();
         logger.info("counter = " + counter);
         product.setCounter(++counter);
+        logger.info("new counter = " + product.getCounter());
         productService.add(product);
         logger.warn("ADDED SUCCESSFULLY");
         List<Product> productList = productService.getRandomProducts();
@@ -84,6 +93,4 @@ public class MainController {
         model.addAttribute("products", productList);
         return "products";
     }
-
-    //TODO Поиск пофикси!!!!!!!!!!!!!!!!
 }

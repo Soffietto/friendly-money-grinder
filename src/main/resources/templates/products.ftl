@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="verify-admitad" content="0faddc6af9"/>
-    <title>Azat's Internet Catalog</title>
+    <title>Internet Catalog</title>
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     <script src="/js/jquery-1.11.0.min.js"></script>
@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <h1>Azat's shop</h1>
+    <h1>Internet Catalog</h1>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
@@ -55,9 +55,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-3 header-right">
                 <div class="search-bar">
-                    <input type="text" value="Search" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Search';}">
-                    <input type="submit" value="">
+                    <form method="get">
+                        <input name="search" type="text" value="Search" onfocus="this.value = '';"
+                               onblur="if (this.value == '') {this.value = 'Search';}">
+                        <input type="submit" value="">
+                    </form>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -74,8 +76,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <#list products as p>
                     <div class="col-md-4 product-left p-left">
                         <div class="product-main simpleCart_shelfItem">
-                            <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img"
-                                                                          src="${p.mainImgUrl}" alt=""/></a>
+                            <#if p.mainImgUrl?has_content>
+                                <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img"
+                                                                              src="${p.mainImgUrl}" alt=""/></a>
+                            <#else>
+                                <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img"
+                                                                              src="/images/noImage.png" alt=""/></a>
+                            </#if>
                             <div class="product-bottom">
                                 <h3>${p.name}</h3>
                                 <h4><a class="item_add" href="#"><i></i></a> <span

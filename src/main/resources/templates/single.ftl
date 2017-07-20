@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="verify-admitad" content="0faddc6af9" />
-    <title>Azat's Internet Catalog</title>
+    <title>Internet Catalog</title>
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     <script src="/js/jquery-1.11.0.min.js"></script>
@@ -12,12 +12,10 @@
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--start-menu-->
     <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="js/memenu.js"></script>
+    <script type="text/javascript" src="/js/memenu.js"></script>
     <script>$(document).ready(function(){$(".memenu").memenu();});</script>
     <!--dropdown-->
     <script type="text/javascript">
@@ -61,7 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <h1>Azat's shop</h1>
+    <h1>Internet Catalog</h1>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
@@ -76,13 +74,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="clearfix"> </div>
             </div>
             <div class="col-md-3 header-right">
-                <div class="search-bar">
-                    <form method="get" action="/search">
-                        <label for="search">Search</label>
-                        <input name="search" type="text" value="Search">
-                        <input type="submit" value="">
-                    </form>
-                </div>
+                <#--<div class="search-bar">-->
+                    <#--<form method="get" action="/search">-->
+                        <#--<label for="search">Search</label>-->
+                        <#--<input name="search" type="text" value="Search">-->
+                        <#--<input type="submit" value="">-->
+                    <#--</form>-->
+                <#--</div>-->
             </div>
             <div class="clearfix"> </div>
         </div>
@@ -99,15 +97,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-5 single-top-left">
                         <div class="flexslider">
                             <ul class="slides">
-                                <li data-thumb="${product.mainImgUrl}">
-                                    <div class="thumb-image"> <img src="${product.imgUrl}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
+                                <#if product.mainImgUrl?has_content>
+                                    <#list imgUrls as i>
+                                        <li data-thumb="${i}">
+                                            <div class="thumb-image"> <img src="${i}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+                                        </li>
+                                    </#list>
+                                <#else>
+                                    <li data-thumb="/images/noImage.png">
+                                        <div class="thumb-image"> <img src="/images/noImage.png" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+                                    </li>
+                                </#if>
                             </ul>
                         </div>
                         <!-- FlexSlider -->
-                        <script src="js/imagezoom.js"></script>
-                        <script defer src="js/jquery.flexslider.js"></script>
-                        <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+                        <script src="/js/imagezoom.js"></script>
+                        <script defer src="/js/jquery.flexslider.js"></script>
+                        <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
 
                         <script>
                             // Can also be used with $(document).ready()
@@ -140,8 +146,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <#list products as p>
                         <div class="col-md-4 product-left p-left">
                             <div class="product-main simpleCart_shelfItem">
-
-                                    <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img" src="${p.imgUrl}" alt="" /></a>
+                                    <#if p.mainImgUrl?has_content>
+                                        <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img" src="${p.mainImgUrl}" alt="" /></a>
+                                    <#else>
+                                        <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img" src="/images/noImage.png" alt="" /></a>
+                                    </#if>
                                     <div class="product-bottom">
                                         <h3>${p.name}</h3>
                                         <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">${p.price}</span></h4>
