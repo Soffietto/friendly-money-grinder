@@ -75,11 +75,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-4 product-left p-left">
                         <div class="product-main simpleCart_shelfItem">
                             <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img"
-                                                                          src="${p.imgUrl}" alt=""/></a>
+                                                                          src="${p.mainImgUrl}" alt=""/></a>
                             <div class="product-bottom">
                                 <h3>${p.name}</h3>
                                 <h4><a class="item_add" href="#"><i></i></a> <span
-                                        class=" item_price">${p.cost} ${p.currency}</span></h4>
+                                        class=" item_price">${p.price} ${p.currency}</span></h4>
                             </div>
                             <div class="srch srch1">
                                 <span>Скидка</span>

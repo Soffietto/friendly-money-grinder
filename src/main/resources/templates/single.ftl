@@ -99,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-5 single-top-left">
                         <div class="flexslider">
                             <ul class="slides">
-                                <li data-thumb="${product.imgUrl}">
+                                <li data-thumb="${product.mainImgUrl}">
                                     <div class="thumb-image"> <img src="${product.imgUrl}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
                                 </li>
                             </ul>
@@ -126,8 +126,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"> </div>
                             </div>
 
-                            <h5 class="item_price">${product.cost} ${product.currency}</h5>
-                            <p>${product.title}</p>
+                            <h5 class="item_price">${product.price} ${product.currency}</h5>
+                            <p>${product.description}</p>
                         </div>
                         <a href="${product.url}" class="add-cart item_add"> BUY!</a>
                     </div>
@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img" src="${p.imgUrl}" alt="" /></a>
                                     <div class="product-bottom">
                                         <h3>${p.name}</h3>
-                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">${p.cost}</span></h4>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">${p.price}</span></h4>
                                     </div>
                             </div>
                         </div>

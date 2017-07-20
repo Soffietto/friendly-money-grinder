@@ -1,34 +1,30 @@
 package ru.jblab.friendlymoney.model;
 
-import sun.security.util.Length;
-
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Product extends AbstractEntity implements Serializable {
 
-    private String serial;
     private String name;
-    private String cost;
+    private String price;
     @Column(length = 500)
     private String url;
+
+    @ElementCollection
+    @Column(length = 400)
+    private List<String> imgUrls;
+
+    @Column(length = 400)
+    private String mainImgUrl;
     @Column(length = 500)
-    private String imgUrl;
-    @Column(length = 500)
-    private String title;
+    private String description;
     private Long counter = 0L;
     private String currency;
     private String category;
-
-    public String getSerial() {
-        return serial;
-    }
-
-    public void setSerial(String serial) {
-        this.serial = serial;
-    }
 
     public String getName() {
         return name;
@@ -38,12 +34,12 @@ public class Product extends AbstractEntity implements Serializable {
         this.name = name;
     }
 
-    public String getCost() {
-        return cost;
+    public String getPrice() {
+        return price;
     }
 
-    public void setCost(String cost) {
-        this.cost = cost;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getUrl() {
@@ -54,20 +50,12 @@ public class Product extends AbstractEntity implements Serializable {
         this.url = url;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getCounter() {
@@ -92,5 +80,21 @@ public class Product extends AbstractEntity implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List<String> getImgUrls() {
+        return imgUrls;
+    }
+
+    public void setImgUrls(List<String> imgUrls) {
+        this.imgUrls = imgUrls;
+    }
+
+    public String getMainImgUrl() {
+        return mainImgUrl;
+    }
+
+    public void setMainImgUrl(String mainImgUrl) {
+        this.mainImgUrl = mainImgUrl;
     }
 }
