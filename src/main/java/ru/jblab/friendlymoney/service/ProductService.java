@@ -25,4 +25,8 @@ public interface ProductService {
     List<Product> getRandomProducts();
 
     List<Product> getAllByNamePart(String namePart);
+
+    Product getByReadableName(String readableName);
+
+    List<Product> findAllByReadableCategory(String readableCategory);
 }

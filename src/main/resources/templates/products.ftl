@@ -34,7 +34,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"></div>
     </div>
 </div>
-</div>
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
@@ -48,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-9 header-left">
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <li class="active"><a href="/products">All Products</a></li>
+                        <li class="active"><a href="/">All Products</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -75,12 +74,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="product-one">
                 <#list products as p>
                     <div class="col-md-4 product-left p-left">
-                        <div class="product-main simpleCart_shelfItem">
+                        <div class="product-main simpleCart_shelfItem" style="height: 100%">
                             <#if p.mainImgUrl?has_content>
-                                <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img"
+                                <a href="/products/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img"
                                                                               src="${p.mainImgUrl}" alt=""/></a>
                             <#else>
-                                <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img"
+                                <a href="/products/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img"
                                                                               src="/images/noImage.png" alt=""/></a>
                             </#if>
                             <div class="product-bottom">
@@ -103,8 +102,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <h4>Catogories</h4>
                         <div class="row1 scroll-pane">
                             <div class="col col-4">
-                                <#list categories as c>
-                                    <label class="checkbox"><a href="/products/category/${c}">${c}</a></label>
+                                <#list categories?keys as key>
+                                    <label class="checkbox"><a href="${categories[key]}">${key}</a></label>
                                 </#list>
                             </div>
                             <div class="col col-4">

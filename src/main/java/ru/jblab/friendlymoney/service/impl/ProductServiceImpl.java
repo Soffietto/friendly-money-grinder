@@ -81,4 +81,14 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllByNamePart(String namePart) {
         return productRepository.getAllByNameContainingIgnoreCase(namePart);
     }
+
+    @Override
+    public Product getByReadableName(String readableName) {
+        return productRepository.getByReadableName(readableName);
+    }
+
+    @Override
+    public List<Product> findAllByReadableCategory(String readableCategory) {
+        return productRepository.findAllByReadableCategory(readableCategory);
+    }
 }

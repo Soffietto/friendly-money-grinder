@@ -68,7 +68,7 @@
         <div class="header">
             <div class="col-md-9 header-left">
                 <div class="top-nav">
-                    <ul class="memenu skyblue"><li class="active"><a href="/products">All Products</a></li>
+                    <ul class="memenu skyblue"><li class="active"><a href="/">All Products</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"> </div>
@@ -134,6 +134,13 @@
 
                             <h5 class="item_price">${product.price} ${product.currency}</h5>
                             <p>${product.description}</p>
+                            <#if params?has_content>
+                                <p>
+                                    <#list params?keys as key>
+                                        ${key} : ${params[key]}
+                                    </#list>
+                                </p>
+                            </#if>
                         </div>
                         <a href="${product.url}" class="add-cart item_add"> BUY!</a>
                     </div>
@@ -145,11 +152,11 @@
                     <div class="product-one">
                     <#list products as p>
                         <div class="col-md-4 product-left p-left">
-                            <div class="product-main simpleCart_shelfItem">
+                            <div class="product-main simpleCart_shelfItem" style="height: 100%">
                                     <#if p.mainImgUrl?has_content>
-                                        <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img" src="${p.mainImgUrl}" alt="" /></a>
+                                        <a href="/products/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img" src="${p.mainImgUrl}" alt="" /></a>
                                     <#else>
-                                        <a href="/products/${p.id}" class="mask"><img class="img-responsive zoom-img" src="/images/noImage.png" alt="" /></a>
+                                        <a href="/products/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img" src="/images/noImage.png" alt="" /></a>
                                     </#if>
                                     <div class="product-bottom">
                                         <h3>${p.name}</h3>

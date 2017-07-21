@@ -5,26 +5,29 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Product extends AbstractEntity implements Serializable {
 
     private String name;
     private String price;
-    @Column(length = 500)
+    @Column(columnDefinition = "Text")
     private String url;
-
     @ElementCollection
-    @Column(length = 400)
+    @Column(columnDefinition = "Text")
     private List<String> imgUrls;
-
-    @Column(length = 400)
+    @Column(columnDefinition = "Text")
     private String mainImgUrl;
-    @Column(length = 10000)
+    @Column(columnDefinition = "Text")
     private String description;
     private Long counter = 0L;
     private String currency;
     private String category;
+    private String readableCategory;
+    private String readableName;
+    @ElementCollection
+    private Map<String, String> params;
 
     public String getName() {
         return name;
@@ -96,5 +99,29 @@ public class Product extends AbstractEntity implements Serializable {
 
     public void setMainImgUrl(String mainImgUrl) {
         this.mainImgUrl = mainImgUrl;
+    }
+
+    public String getReadableCategory() {
+        return readableCategory;
+    }
+
+    public void setReadableCategory(String readableCategory) {
+        this.readableCategory = readableCategory;
+    }
+
+    public String getReadableName() {
+        return readableName;
+    }
+
+    public void setReadableName(String readableName) {
+        this.readableName = readableName;
+    }
+
+    public Map<String, String> getParams() {
+        return params;
+    }
+
+    public void setParams(Map<String, String> params) {
+        this.params = params;
     }
 }

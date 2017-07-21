@@ -14,9 +14,7 @@ import ru.jblab.friendlymoney.model.Product;
 import ru.jblab.friendlymoney.service.ProductService;
 import ru.jblab.friendlymoney.util.ServerUtil;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -26,18 +24,19 @@ public class MainController {
     private final ProductService productService;
 
     @Autowired
-    public MainController(ProductService productService, Environment env, ServerUtil serverUtil) {
+    public MainController(ProductService productService) {
         this.productService = productService;
     }
 
-    @RequestMapping("/products")
+    @RequestMapping("/")
     public String getProductsPage(@RequestParam(value = "search", required = false) String namePart, Model model) {
         List<Product> productList = productService.getAll();
-        Set<String> categories = new HashSet<>();
+        Map<String, String> categories = new HashMap<>();
         for (Product product : productList) {
             String category = product.getCategory();
-            if (category != null)
-                categories.add(category);
+            String readableCategory = product.getReadableCategory();
+            if (category != null && readableCategory != null)
+                categories.put(category, readableCategory);
         }
         if (categories.size() != 0) {
             model.addAttribute("categories", categories);
@@ -53,15 +52,11 @@ public class MainController {
         return "products";
     }
 
-    @RequestMapping("/home")
-    public String getHomePage() {
-        return "home";
-    }
-
-    @RequestMapping("/products/{product_id}")
-    public String getSinglePage(@PathVariable(name = "product_id") Long id, Model model) {
-        Product product = productService.findOneById(id);
+    @RequestMapping("/products/{readable_category}/{readable_name}")
+    public String getSinglePage(@PathVariable(name = "readable_name") String readableName, Model model) {
+        Product product = productService.getByReadableName(readableName);
         List<String> productImgs = product.getImgUrls();
+        Map<String, String> params = product.getParams();
         model.addAttribute("imgUrls", productImgs);
         Long counter = product.getCounter();
         logger.info("counter = " + counter);
@@ -72,18 +67,20 @@ public class MainController {
         List<Product> productList = productService.getRandomProducts();
         model.addAttribute("product", product);
         model.addAttribute("products", productList);
+        model.addAttribute("params", params);
         return "single";
     }
 
-    @RequestMapping("/products/category/{category}")
-    public String getCategoryPage(@PathVariable(name = "category") String category, Model model) {
-        List<Product> productList = productService.getAllByCategory(category);
+    @RequestMapping("/{readable_category}")
+    public String getCategoryPage(@PathVariable(name = "readable_category") String readableCategory, Model model) {
+        List<Product> productList = productService.findAllByReadableCategory(readableCategory);
         List<Product> allProductList = productService.getAll();
-        Set<String> categories = new HashSet<>();
+        Map<String, String> categories = new HashMap<>();
         for (Product product : allProductList) {
             String cat = product.getCategory();
-            if (cat != null)
-                categories.add(cat);
+            String allReadableCategories = product.getReadableCategory();
+            if (cat != null && allReadableCategories != null)
+                categories.put(cat, allReadableCategories);
         }
         if (categories.size() != 0) {
             model.addAttribute("categories", categories);
