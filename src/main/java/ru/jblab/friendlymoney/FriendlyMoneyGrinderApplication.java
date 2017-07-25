@@ -45,7 +45,7 @@ public class FriendlyMoneyGrinderApplication {
     @PostConstruct
     public void getUidifEmpty() throws IOException {
         List<UID> uidList = uidService.getAll();
-        if (uidList == null) {
+        if (uidList.size() == 0) {
             String uidString = serverUtil.getUID();
             UID uid = new UID();
             uid.setUid(uidString);

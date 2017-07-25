@@ -3,12 +3,12 @@
 <head>
     <meta name="verify-admitad" content="0faddc6af9"/>
     <title>Internet Catalog</title>
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-1.11.0.min.js"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
-    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -21,7 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         window.scrollTo(0, 1);
     } </script>
     <!--start-menu-->
-    <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
 <!--top-header-->
@@ -47,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-9 header-left">
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <li class="active"><a href="/products/1">All Products</a></li>
+                        <li class="active"><a href="products/1">All Products</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
