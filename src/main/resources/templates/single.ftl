@@ -3,19 +3,19 @@
 <head>
     <meta name="verify-admitad" content="0faddc6af9" />
     <title>Internet Catalog</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--start-menu-->
-    <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="js/memenu.js"></script>
+    <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="/js/memenu.js"></script>
     <script>$(document).ready(function(){$(".memenu").memenu();});</script>
     <!--dropdown-->
     <script type="text/javascript">
@@ -111,9 +111,9 @@
                             </ul>
                         </div>
                         <!-- FlexSlider -->
-                        <script src="js/imagezoom.js"></script>
-                        <script defer src="js/jquery.flexslider.js"></script>
-                        <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+                        <script src="/js/imagezoom.js"></script>
+                        <script defer src="/js/jquery.flexslider.js"></script>
+                        <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
 
                         <script>
                             // Can also be used with $(document).ready()
@@ -154,9 +154,9 @@
                         <div class="col-md-4 product-left p-left">
                             <div class="product-main simpleCart_shelfItem" style="height: 100%">
                                     <#if p.mainImgUrl?has_content>
-                                        <a href="/products/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img" src="${p.mainImgUrl}" alt="" /></a>
+                                        <a href="/product/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img" src="${p.mainImgUrl}" alt="" /></a>
                                     <#else>
-                                        <a href="/products/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img" src="/images/noImage.png" alt="" /></a>
+                                        <a href="/product/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img" src="/images/noImage.png" alt="" /></a>
                                     </#if>
                                     <div class="product-bottom">
                                         <h3>${p.name}</h3>

@@ -32,10 +32,10 @@ public class MainController {
 
     @RequestMapping("/")
     public String getProductsPage() {
-        return "redirect:/1";
+        return "redirect:/products/1";
     }
 
-    @RequestMapping("/{page}")
+    @RequestMapping("/products/{page}")
     public String getPaginatedProductList(@PathVariable(name = "page") String page,
                                           @RequestParam(value = "search", required = false) String namePart,
                                           Model model){
@@ -65,7 +65,7 @@ public class MainController {
         return "products";
     }
 
-    @RequestMapping("/products/{readable_category}/{readable_name}")  //TODO Исправить
+    @RequestMapping("/product/{readable_category}/{readable_name}")  //TODO Исправить
     public String getSinglePage(@PathVariable(name = "readable_name") String readableName, Model model) {
         Product product = productService.getByReadableName(readableName);
         List<String> productImgs = product.getImgUrls();
@@ -84,7 +84,7 @@ public class MainController {
         return "single";
     }
 
-    @RequestMapping("/{readable_category}/{page}")
+    @RequestMapping("/products/{readable_category}/{page}")
     public String getCategoryPage(@PathVariable(name = "readable_category") String readableCategory,
                                   @PathVariable(name = "page") String page,
                                   Model model) {
@@ -107,6 +107,7 @@ public class MainController {
         }
         model.addAttribute("products", productList);
         model.addAttribute("size", size);
+        model.addAttribute("category", readableCategory);
         return "products";
     }
 }

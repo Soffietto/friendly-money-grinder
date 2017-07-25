@@ -3,12 +3,12 @@
 <head>
     <meta name="verify-admitad" content="0faddc6af9"/>
     <title>Internet Catalog</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -21,7 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         window.scrollTo(0, 1);
     } </script>
     <!--start-menu-->
-    <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
 <!--top-header-->
@@ -47,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-9 header-left">
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <li class="active"><a href="products/1">All Products</a></li>
+                        <li class="active"><a href="/">All Products</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -62,9 +62,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="clearfix"></div>
-        <#list 1..size as i>
-            <a href="/products/${i}">${i}</a>
-        </#list>
+            <#if category?has_content>
+                <#list 1..size as i>
+                    <a href="/products/${category}/${i}">${i}</a>
+                </#list>
+            <#else>
+                <#list 1..size as i>
+                    <a href="/products/${i}">${i}</a>
+                </#list>
+            </#if>
         </div>
     </div>
 </div>
@@ -79,10 +85,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-4 product-left p-left">
                         <div class="product-main simpleCart_shelfItem" style="height: 100%">
                             <#if p.mainImgUrl?has_content>
-                                <a href="/products/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img"
+                                <a href="/product/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img"
                                                                               src="${p.mainImgUrl}" alt=""/></a>
                             <#else>
-                                <a href="/products/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img"
+                                <a href="/product/${p.readableCategory}/${p.readableName}" class="mask"><img class="img-responsive zoom-img"
                                                                               src="/images/noImage.png" alt=""/></a>
                             </#if>
                             <div class="product-bottom">
