@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
+import ru.jblab.friendlymoney.model.UID;
+import ru.jblab.friendlymoney.service.UIDService;
 import ru.jblab.friendlymoney.util.ServerUtil;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +20,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -27,6 +30,8 @@ public class FriendlyMoneyGrinderApplication {
 
     @Autowired
     private ServerUtil serverUtil;
+    @Autowired
+    private UIDService uidService;
 
     public static void main(String[] args) {
         SpringApplication.run(FriendlyMoneyGrinderApplication.class, args);
@@ -39,20 +44,13 @@ public class FriendlyMoneyGrinderApplication {
 
     @PostConstruct
     public void getUidifEmpty() throws IOException {
-        FileInputStream in = new FileInputStream("src/main/resources/server.properties");
-        Properties props = new Properties();
-        props.load(in);
-        in.close();
-
-        FileOutputStream out = new FileOutputStream("src/main/resources/server.properties", true);
-        String property = props.getProperty("server.uid");
-        if (property == null) {
-            String uId = serverUtil.getUID();
-            props.setProperty("server.uid", uId);
-            props.remove("server.url");
-            props.store(out, null);
+        List<UID> uidList = uidService.getAll();
+        if (uidList == null) {
+            String uidString = serverUtil.getUID();
+            UID uid = new UID();
+            uid.setUid(uidString);
+            uidService.add(uid);
         }
-        out.close();
     }
 
 }

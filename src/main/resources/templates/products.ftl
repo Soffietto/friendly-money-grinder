@@ -47,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-9 header-left">
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <li class="active"><a href="/">All Products</a></li>
+                        <li class="active"><a href="/products/1">All Products</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -62,6 +62,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="clearfix"></div>
+        <#list 1..size as i>
+            <a href="/products/${i}">${i}</a>
+        </#list>
         </div>
     </div>
 </div>
@@ -84,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </#if>
                             <div class="product-bottom">
                                 <h3>${p.name}</h3>
-                                <h4><a class="item_add" href="#"><i></i></a> <span
+                                <h4><#--<a class="item_add" href="#"><i></i></a> --><span
                                         class=" item_price">${p.price} ${p.currency}</span></h4>
                             </div>
                             <div class="srch srch1">
@@ -103,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="row1 scroll-pane">
                             <div class="col col-4">
                                 <#list categories?keys as key>
-                                    <label class="checkbox"><a href="${categories[key]}">${key}</a></label>
+                                    <label class="checkbox"><a href="/products/${categories[key]}/1">${key}</a></label>
                                 </#list>
                             </div>
                             <div class="col col-4">

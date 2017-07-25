@@ -1,5 +1,6 @@
 package ru.jblab.friendlymoney.service;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import ru.jblab.friendlymoney.model.Product;
 
@@ -28,5 +29,7 @@ public interface ProductService {
 
     Product getByReadableName(String readableName);
 
-    List<Product> findAllByReadableCategory(String readableCategory);
+    Page<Product> findAllByReadableCategory(String readableCategory, int page);
+
+    Page<Product> findAll(int page);
 }

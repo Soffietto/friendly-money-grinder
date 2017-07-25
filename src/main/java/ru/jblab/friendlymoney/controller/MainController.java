@@ -4,9 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,8 +31,18 @@ public class MainController {
     }
 
     @RequestMapping("/")
-    public String getProductsPage(@RequestParam(value = "search", required = false) String namePart, Model model) {
-        List<Product> productList = productService.getAll();
+    public String getProductsPage() {
+        return "redirect:/1";
+    }
+
+    @RequestMapping("/{page}")
+    public String getPaginatedProductList(@PathVariable(name = "page") String page,
+                                          @RequestParam(value = "search", required = false) String namePart,
+                                          Model model){
+        int intPage = Integer.parseInt(page);
+        Page<Product> productPage = productService.findAll(intPage);
+        List<Product> productList = productPage.getContent();
+        Integer size = productPage.getTotalPages();
         Map<String, String> categories = new HashMap<>();
         for (Product product : productList) {
             String category = product.getCategory();
@@ -49,10 +61,11 @@ public class MainController {
             List<Product> namePartList = productService.getAllByNamePart(namePart);
             model.addAttribute("products", namePartList);
         }
+        model.addAttribute("size", size);
         return "products";
     }
 
-    @RequestMapping("/products/{readable_category}/{readable_name}")
+    @RequestMapping("/products/{readable_category}/{readable_name}")  //TODO Исправить
     public String getSinglePage(@PathVariable(name = "readable_name") String readableName, Model model) {
         Product product = productService.getByReadableName(readableName);
         List<String> productImgs = product.getImgUrls();
@@ -71,9 +84,14 @@ public class MainController {
         return "single";
     }
 
-    @RequestMapping("/{readable_category}")
-    public String getCategoryPage(@PathVariable(name = "readable_category") String readableCategory, Model model) {
-        List<Product> productList = productService.findAllByReadableCategory(readableCategory);
+    @RequestMapping("/{readable_category}/{page}")
+    public String getCategoryPage(@PathVariable(name = "readable_category") String readableCategory,
+                                  @PathVariable(name = "page") String page,
+                                  Model model) {
+        int intPage = Integer.parseInt(page);
+        Page<Product> productPage = productService.findAllByReadableCategory(readableCategory, intPage);
+        List<Product> productList = productPage.getContent();
+        Integer size = productPage.getTotalPages();
         List<Product> allProductList = productService.getAll();
         Map<String, String> categories = new HashMap<>();
         for (Product product : allProductList) {
@@ -88,6 +106,7 @@ public class MainController {
             model.addAttribute("categories", null);
         }
         model.addAttribute("products", productList);
+        model.addAttribute("size", size);
         return "products";
     }
 }

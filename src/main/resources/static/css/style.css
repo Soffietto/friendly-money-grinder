@@ -637,17 +637,7 @@ figure.effect-bubba:hover p,figure.effect-bubba:hover h2 {
     margin: 5px 0 0 0;
     font-family: 'BreeSerif-Regular';
 }
-.product-bottom h4 i {
-    background: url(../images/cart-2.png) no-repeat;
-    width: 20px;
-    height: 15px;
-    display: inline-block;
-    margin-right: 4px;
-    vertical-align: middle;
-}
-.product-left:hover .product-bottom h4 i{
-	background: url(../images/cart-3.png) no-repeat;
-}
+
 .product-bottom {
     text-align: left;
     margin-top: 20px;

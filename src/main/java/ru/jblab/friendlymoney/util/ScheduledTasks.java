@@ -26,7 +26,7 @@ public class ScheduledTasks {
 
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-    private final int GET_COUNT = 50;
+    private final int GET_COUNT = 1000;
 
     private final ProductService productService;
     private final ServerUtil serverUtil;

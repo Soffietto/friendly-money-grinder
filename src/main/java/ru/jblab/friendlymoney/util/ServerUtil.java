@@ -1,7 +1,5 @@
 package ru.jblab.friendlymoney.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -12,6 +10,8 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import ru.jblab.friendlymoney.model.Product;
+import ru.jblab.friendlymoney.model.UID;
+import ru.jblab.friendlymoney.service.UIDService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,13 +22,15 @@ public class ServerUtil {
 
     private final RestTemplate restTemplate;
     private final Environment env;
+    private final UIDService uidService;
     private final String GET_PRODUCTS_URL = "get";
     private final String GET_UID_URL = "registration";
 
     @Autowired
-    public ServerUtil(RestTemplate restTemplate, Environment env) {
+    public ServerUtil(RestTemplate restTemplate, Environment env, UIDService uidService) {
         this.restTemplate = restTemplate;
         this.env = env;
+        this.uidService = uidService;
     }
 
     public List<Product> getAllFromServer(int count) {
@@ -36,7 +38,8 @@ public class ServerUtil {
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         String serverUrl = env.getProperty("server.url");
         serverUrl += GET_PRODUCTS_URL;
-        String serverUid = env.getProperty("server.uid");
+        List<UID> uidList = uidService.getAll();
+        String serverUid = uidList.get(0).getUid();
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(serverUrl)
                 .queryParam("count", count)
                 .queryParam("uid", serverUid);
