@@ -3,7 +3,6 @@ package ru.jblab.friendlymoney.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -11,13 +10,8 @@ import org.springframework.stereotype.Component;
 import ru.jblab.friendlymoney.model.Product;
 import ru.jblab.friendlymoney.service.ProductService;
 
-import javax.annotation.PostConstruct;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Properties;
 
 import static java.lang.Math.toIntExact;
 
@@ -27,6 +21,7 @@ public class ScheduledTasks {
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private final int GET_COUNT = 1000;
+    private final Integer DELAY_RATE = 8640000;/*604800000*/ //именно столько миллисекунд в неделе
 
     private final ProductService productService;
     private final ServerUtil serverUtil;
@@ -37,7 +32,7 @@ public class ScheduledTasks {
         this.serverUtil = serverUtil;
     }
 
-    @Scheduled(fixedRate = /*60480000*/864000) //именно столько миллисекунд в неделе
+    @Scheduled(fixedRate = DELAY_RATE)
     public void updateProductDataBase() {
         log.info("----------------------------");
         log.info("Product table is now being updated");
