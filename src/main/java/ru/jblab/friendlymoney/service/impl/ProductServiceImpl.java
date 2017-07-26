@@ -66,15 +66,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getRandomProducts() {
-        Long count = PRODUCT_REPOSITORY.count();
+    public List<Product> getRandomProducts(String readableCategory) {
+        List<Product> categoryProducts = PRODUCT_REPOSITORY.findAllByReadableCategory(readableCategory);
+        int count = categoryProducts.size();
         if (count > 3) {
             count/=3;
-            int index = (int) (Math.random() * (toIntExact(count)));
-            Page<Product> productPage = PRODUCT_REPOSITORY.findAll(new PageRequest(index, 3));
+            int index = (int) (Math.random() * count);
+            Page<Product> productPage = PRODUCT_REPOSITORY.findAllByReadableCategory(readableCategory, new PageRequest(index, 3));
             return productPage.getContent();
         }
-        return PRODUCT_REPOSITORY.findAll();
+        return categoryProducts;
     }
 
     @Override

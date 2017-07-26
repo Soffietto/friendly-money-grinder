@@ -66,7 +66,9 @@ public class MainController {
     }
 
     @RequestMapping("/product/{readable_category}/{readable_name}")  //TODO Исправить
-    public String getSinglePage(@PathVariable(name = "readable_name") String readableName, Model model) {
+    public String getSinglePage(@PathVariable(name = "readable_category") String readableCategory,
+                                @PathVariable(name = "readable_name") String readableName,
+                                Model model) {
         Product product = productService.getByReadableName(readableName);
         List<String> productImgs = product.getImgUrls();
         Map<String, String> params = product.getParams();
@@ -77,7 +79,7 @@ public class MainController {
         logger.info("new counter = " + product.getCounter());
         productService.add(product);
         logger.warn("ADDED SUCCESSFULLY");
-        List<Product> productList = productService.getRandomProducts();
+        List<Product> productList = productService.getRandomProducts(readableCategory);
         model.addAttribute("product", product);
         model.addAttribute("products", productList);
         model.addAttribute("params", params);

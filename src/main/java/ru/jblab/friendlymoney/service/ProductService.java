@@ -23,7 +23,7 @@ public interface ProductService {
 
     List<Product> getAllByCategory(String category);
 
-    List<Product> getRandomProducts();
+    List<Product> getRandomProducts(String readableCategory);
 
     List<Product> getAllByNamePart(String namePart);
 
