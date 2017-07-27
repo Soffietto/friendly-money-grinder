@@ -21,7 +21,7 @@ public class ScheduledTasks {
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private final int GET_COUNT = 1000;
-    private final Integer DELAY_RATE = 8640000;/*604800000*/ //именно столько миллисекунд в неделе
+//    private final Integer DELAY_RATE = ;/*604800000*/ //именно столько миллисекунд в неделе
 
     private final ProductService productService;
     private final ServerUtil serverUtil;
@@ -32,7 +32,7 @@ public class ScheduledTasks {
         this.serverUtil = serverUtil;
     }
 
-    @Scheduled(fixedRate = DELAY_RATE)
+    @Scheduled(fixedRate = 8640000)
     public void updateProductDataBase() {
         log.info("----------------------------");
         log.info("Product table is now being updated");
