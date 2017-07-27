@@ -21,7 +21,6 @@ public class ScheduledTasks {
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private final int GET_COUNT = 1000;
-//    private final Integer DELAY_RATE = ;/*604800000*/ //именно столько миллисекунд в неделе
 
     private final ProductService productService;
     private final ServerUtil serverUtil;
@@ -43,6 +42,10 @@ public class ScheduledTasks {
             List<Product> deleteProductList = productService.getAllFirstByCounter(pageable);
             int listCount = deleteProductList.size();
             newProductList = serverUtil.getAllFromServer(listCount);
+            if(newProductList.size() == 0){
+                log.info("Can't download anything from the server!");
+                return;
+            }
             log.info("delete count is " + listCount);
             log.info("-------------------------");
             for (Product product : deleteProductList) {

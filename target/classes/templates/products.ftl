@@ -62,6 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="clearfix"></div>
+        <#if size != 0>
             <#if category?has_content>
                 <#list 1..size as i>
                     <a href="/products/${category}/${i}">${i}</a>
@@ -71,6 +72,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="/products/${i}">${i}</a>
                 </#list>
             </#if>
+        <#else >
+            <h4>No products</h4>
+        </#if>
         </div>
     </div>
 </div>
