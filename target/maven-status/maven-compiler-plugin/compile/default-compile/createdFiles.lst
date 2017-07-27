@@ -1,0 +1,13 @@
+ru/jblab/friendlymoney/FriendlyMoneyGrinderApplication.class
+ru/jblab/friendlymoney/repository/UIDRespository.class
+ru/jblab/friendlymoney/model/Product.class
+ru/jblab/friendlymoney/util/ScheduledTasks.class
+ru/jblab/friendlymoney/model/UID.class
+ru/jblab/friendlymoney/service/ProductService.class
+ru/jblab/friendlymoney/service/impl/ProductServiceImpl.class
+ru/jblab/friendlymoney/controller/MainController.class
+ru/jblab/friendlymoney/model/AbstractEntity.class
+ru/jblab/friendlymoney/util/ServerUtil.class
+ru/jblab/friendlymoney/repository/ProductRepository.class
+ru/jblab/friendlymoney/service/impl/UIDServiceImpl.class
+ru/jblab/friendlymoney/service/UIDService.class

@@ -1,0 +1,15 @@
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/config/WebConfig.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/FriendlyMoneyGrinderApplication.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/service/impl/UIDServiceImpl.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/util/ServerUtil.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/service/ProductService.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/model/UID.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/util/RequestSender.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/repository/UIDRespository.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/service/UIDService.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/util/ScheduledTasks.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/controller/MainController.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/service/impl/ProductServiceImpl.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/model/AbstractEntity.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/model/Product.java
+/Users/azathajrullin/Desktop/friendly-money-grinder/src/main/java/ru/jblab/friendlymoney/repository/ProductRepository.java
