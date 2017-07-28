@@ -10,9 +10,10 @@ services:
 - postgresql
 
 before_install:
-  - docker run -p 5431:5432 --name postgres-container -e POSTGRES_PASSWORD=6833 -e POSTGRES_DB=friendly_money_grinder -d postgres:latest
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker build -t myproject .
-  - docker run -it --link postgres-container:pgc myproject
+  - docker tag myproject $DOCKER_USERNAME/friendly-money-grinder
+  - docker push $DOCKER_USERNAME/friendly-money-grinder
 
 deploy:
   provider: heroku
