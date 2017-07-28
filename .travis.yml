@@ -1,8 +1,19 @@
+sudo: required
+
 language: java
+
 jdk:
 - oraclejdk8
+
 services:
+- docker
 - postgresql
+
+before_install:
+  - docker run -p 5431:5432 --name postgres-container -e POSTGRES_PASSWORD=6833 -e POSTGRES_DB=friendly_money_grinder -d postgres:latest
+  - docker build -t myproject .
+  - docker run -it --link postgres-container:pgc springio/friendly-money-grinder:latest
+
 deploy:
   provider: heroku
   api_key:
