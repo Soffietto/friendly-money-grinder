@@ -11,8 +11,6 @@ import ru.jblab.friendlymoney.service.ProductService;
 
 import java.util.List;
 
-import static java.lang.Math.toIntExact;
-
 @Service
 public class ProductServiceImpl implements ProductService {
 
