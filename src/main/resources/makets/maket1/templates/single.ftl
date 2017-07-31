@@ -74,13 +74,6 @@
                 <div class="clearfix"> </div>
             </div>
             <div class="col-md-3 header-right">
-                <#--<div class="search-bar">-->
-                    <#--<form method="get" action="/search">-->
-                        <#--<label for="search">Search</label>-->
-                        <#--<input name="search" type="text" value="Search">-->
-                        <#--<input type="submit" value="">-->
-                    <#--</form>-->
-                <#--</div>-->
             </div>
             <div class="clearfix"> </div>
         </div>
