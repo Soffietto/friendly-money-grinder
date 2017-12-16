@@ -6,7 +6,7 @@
 	<groupId>ru.jblab.friendlymoney</groupId>
 	<artifactId>friendly-money-grinder</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>friendly-money-grinder</name>
 	<description>Second Attempt of Creating that project</description>
